@@ -81,7 +81,13 @@ module.exports = function (grunt) {
               return false;
             }
 
-            var imagePath = ref.match(filepathRegex)[0].replace(/['"]/g, '');
+            var matches = ref.match(filepathRegex);
+
+            if (matches == null) {
+              return;
+            }
+
+            var imagePath = matches[0].replace(/['"]/g, '');
 
             grunt.verbose.writeln('>> Fix the img ref path from : ', ref, ' to be ', imagePath);
 
